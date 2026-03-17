@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Title: {{ author.first_name }}, {{ author.last_name }}</h1>
+  <h6>{{ author.date_of_birth }} - {{ Death_date_Converter }}</h6>
+  <h3 style="font-family: 'Times New Roman', Times, serif"><strong>Books:</strong> <a href="">{{ book.author }}</a></h3>
+  <!-- author detail link not yet defined -->
+  {% if book_list %}
+    <ul>
+      {% for book in book_list %}
+      <li>
+        <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
+        ({{book.author}})
+      </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no books in the library.</p>
+  {% endif %}
+{% endblock %}
